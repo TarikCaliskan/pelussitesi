@@ -1,2 +1,0 @@
-# pelussitesi
-peluş oyuncak sitesi
