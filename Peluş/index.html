@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Peluş Sitesi</title>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="#">Peluş</a></div>
+            <ul class="links">
+                <li><a href="#">AnaSayfa</a></li>
+                <li><a href="#">Ürünler</a></li>
+                <li><a href="#">Geri Dönüşler</a></li>
+                <li><a href="#">İletişim</a></li>
+                <li><a href="#">Kampanyalar</a></li>
+            </ul>
+            <a href="#" class="kayit_btn">Kayıt Ol</a>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        <div class="dropdown_menu">
+            <li><a href="AnaSayfa">AnaSayfa</a></li>
+                <li><a href="Ürünler">Ürünler</a></li>
+                <li><a href="Geri Dönüşler">Geri Dönüşler</a></li>
+                <li><a href="İletişim">İletişim</a></li>
+                <li><a href="Kampanyalar">Kampanyalar</a></li>
+                <li><a href="#" class="kayit_btn">Kayıt Ol</a></li>
+        </div>
+    </header>
+
+    <section class="product-slider">
+        <button class="scroll-left"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="product-container">
+            <div class="product-card">
+                <img src="C:\Users\Tarik\OneDrive\Masaüstü\Peluş\resimler\peluskurt.jpg" alt="Peluş Kurt">
+                <h3>Peluş Kurt</h3>
+                <p>200 TL</p>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\Tarik\OneDrive\Masaüstü\Peluş\resimler\pelusmidilli.png" alt="Peluş Midilli">
+                <h3>Peluş Midilli</h3>
+                <p>250 TL</p>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\Tarik\OneDrive\Masaüstü\Peluş\resimler\peluspenguen.jpg" alt="Peluş Penguen">
+                <h3>Peluş Penguen</h3>
+                <p>300 TL</p>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\Tarik\OneDrive\Masaüstü\Peluş\resimler\peluspikachu.webp" alt="Peluş Pikachu">
+                <h3>Peluş Pikachu</h3>
+                <p>300 TL</p>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\Tarik\OneDrive\Masaüstü\Peluş\resimler\pelustavsan.jpg" alt="Peluş Tavşan">
+                <h3>Peluş Tavşan</h3>
+                <p>200 TL</p>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\Tarik\OneDrive\Masaüstü\Peluş\resimler\pelusayş.jpg" alt="Peluş Ayı">
+                <h3>Peluş Ayı</h3>
+                <p>250 TL</p>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\Tarik\OneDrive\Masaüstü\Peluş\resimler\peluskedi.jpg" alt="Peluş Kedi">
+                <h3>Peluş Kedi</h3>
+                <p>400 TL</p>
+            </div>
+            <div class="product-card">
+                <img src="C:\Users\Tarik\OneDrive\Masaüstü\Peluş\resimler\pelusmaymun.jpg" alt="Peluş Maymun">
+                <h3>Peluş Maymun</h3>
+                <p>350 TL</p>
+            </div>
+        </div>
+        <button class="scroll-right"><i class="fa-solid fa-chevron-right"></i></button>
+    </section>
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+        autoScroll = setInterval(() => {
+                    container.scrollBy({ left: 150, behavior: 'smooth' });
+                    checkScrollEnd();
+                }, 1500);
+
+        toggleBtn.onclick = function () {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+
+            if (isOpen){
+                clearInterval(autoScroll);
+                dropDownMenu.style.display = 'block';
+                toggleBtnIcon.classList = 'fa-solid fa-xmark';
+            } else {
+                dropDownMenu.style.display = 'none';
+                toggleBtnIcon.classList = 'fa-solid fa-bars';
+                autoScroll = setInterval(() => {
+                    container.scrollBy({ left: 150, behavior: 'smooth' });
+                    checkScrollEnd();
+                }, 2000);
+            }
+            
+        }
+        const container = document.querySelector('.product-container');
+        const productCards = document.querySelectorAll('.product-card');
+        document.querySelector('.scroll-left').addEventListener('click', () => {
+            container.scrollBy({ left: -150, behavior: 'smooth' });
+            checkScrollEnd();
+        });
+        document.querySelector('.scroll-right').addEventListener('click', () => {
+            container.scrollBy({ left: 150, behavior: 'smooth' });
+            checkScrollEnd();
+        });
+        function checkScrollEnd() {
+        const maxScrollLeft = container.scrollWidth - container.clientWidth; 
+         if (container.scrollLeft >= maxScrollLeft) {
+        container.scrollTo({ left: 0, behavior: 'smooth' }); 
+         }
+        }
+        productCards.forEach(card => {
+        card.addEventListener('mouseover', () => {
+            clearInterval(autoScroll);
+         });
+        card.addEventListener('mouseout', () => {
+            autoScroll = setInterval(() => {
+                container.scrollBy({ left: 150, behavior: 'smooth' });
+                checkScrollEnd();
+            }, 1500);
+           });
+          });
+
+    
+    </script>
+
+
+</body>
+</html>
